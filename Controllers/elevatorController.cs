@@ -11,7 +11,7 @@ namespace Rockets_Elevators_web_api.Controllers{
         public ElevatorController(rocket_peterpanContext context) => _context = context;
 
         [HttpGet]
-        public async Task<IEnumerable<Elevator>> GetElevators() => _context.Elevators.Where(e => e.Status == "notInOparation");
+        public async Task<IEnumerable<Elevator>> GetElevators() => _context.Elevators.Where(e => e.Status == "notInOperation");
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetElevatorStatusById(long id){
@@ -20,11 +20,12 @@ namespace Rockets_Elevators_web_api.Controllers{
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateElevatorById(long id, Elevator elevator){
-            if(id != elevator.Id) return BadRequest();
-            _context.Entry(elevator).State = EntityState.Modified;
+        public async Task<IActionResult> UpdateElevatorStatusById(long id, String status){
+            var elevator = _context.Elevators.FirstOrDefault(e => e.Id == id);
+            if (elevator == null) return NotFound();
+            elevator.Status = status;
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok(elevator);
         }
     }
 }

@@ -14,17 +14,18 @@ namespace Rockets_Elevators_web_api.Controllers{
         // public async Task<IEnumerable<Battery>> GetBatteries() => await _context.Batteries.ToListAsync();
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBatterieStatusById(long id){
+        public async Task<IActionResult> GetBatteryStatusById(long id){
             var battery = _context.Batteries.Where(b => b.Id == id).Select(b => new BatteryStatus(){Status = b.Status});
             return battery == null ? NotFound() : Ok(battery);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBatteryStatusById(long id, Battery battery){
-            if(id != battery.Id) return BadRequest();
-            _context.Entry(battery).State = EntityState.Modified;
+        public async Task<IActionResult> UpdateBatteryStatusById(long id, String status){
+            var battery = _context.Batteries.FirstOrDefault(b => b.Id == id);
+            if (battery == null) return NotFound();
+            battery.Status = status;
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok(battery);
         }
     }
 }
