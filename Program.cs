@@ -15,11 +15,6 @@ builder.Services.AddDbContext<rocket_peterpanContext>(options => {
 
 var app = builder.Build();
 
-if (builder.Environment.IsProduction())
-{
-    app.UsePathBase("https://rocketelevators-api.azurewebsites.net/swagger/index.html"); 
-}
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
