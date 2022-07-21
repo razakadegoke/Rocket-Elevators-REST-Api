@@ -4,7 +4,6 @@ using Rockets_Elevators_web_api;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -16,12 +15,13 @@ builder.Services.AddDbContext<rocket_peterpanContext>(options => {
 
 var app = builder.Build();
 
-// // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
-// {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-// }
+if (builder.Environment.IsProduction())
+{
+    app.UsePathBase("https://rocketelevators-api.azurewebsites.net/swagger/index.html"); 
+}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
