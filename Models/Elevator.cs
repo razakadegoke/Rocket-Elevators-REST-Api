@@ -19,6 +19,7 @@ namespace Rockets_Elevators_web_api
         public string Information { get; set; } = null!;
         public string Notes { get; set; } = null!;
         public long? ColumnId { get; set; }
+        public Column Column { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

@@ -15,6 +15,9 @@ namespace Rockets_Elevators_web_api
         public string Information { get; set; } = null!;
         public string Notes { get; set; } = null!;
         public long? BuildingId { get; set; }
+        public Building Building { get; set; }
+        public List<Column> Columns { get; set;}
+        
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

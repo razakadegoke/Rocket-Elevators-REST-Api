@@ -14,6 +14,7 @@ namespace Rockets_Elevators_web_api
         public string EmailTechnicalAuthority { get; set; } = null!;
         public string PhoneTechnicalAuthority { get; set; } = null!;
         public long? CustomerId { get; set; }
+        public List<Battery> Batteries { get; set;}
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
