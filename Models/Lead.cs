@@ -14,7 +14,7 @@ namespace Rockets_Elevators_web_api
         public string DescriptionProject { get; set; } = null!;
         public string Department { get; set; } = null!;
         public string Message { get; set; } = null!;
-        public byte[] File { get; set; } = null!;
+        // public byte[] File { get; set; } = null!;
         public DateTime Date { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

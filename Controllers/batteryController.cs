@@ -7,25 +7,19 @@ namespace Rockets_Elevators_web_api.Controllers{
     [ApiController]
     public class BatteryController : ControllerBase{
         private readonly rocket_peterpanContext _context;
-
         public BatteryController(rocket_peterpanContext context) => _context = context;
-
-        // [HttpGet]
-        // public async Task<IEnumerable<Battery>> GetBatteries() => await _context.Batteries.ToListAsync();
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBatteryStatusById(long id){
             var battery = _context.Batteries.Where(b => b.Id == id).Select(b => new BatteryStatus(){Status = b.Status});
             return battery == null ? NotFound() : Ok(battery);
         }
-
-        [HttpPut("{id}")]
+        [HttpPut("{id}/{status}")]
         public async Task<IActionResult> UpdateBatteryStatusById(long id, String status){
             var battery = _context.Batteries.FirstOrDefault(b => b.Id == id);
             if (battery == null) return NotFound();
             battery.Status = status;
             await _context.SaveChangesAsync();
-            return Ok(battery);
+            return battery == null ? NotFound() : Ok(battery);
         }
     }
 }

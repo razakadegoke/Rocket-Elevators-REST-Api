@@ -7,12 +7,13 @@ namespace Rockets_Elevators_web_api.Controllers{
     [ApiController]
     public class BuildingController : ControllerBase{
         private readonly rocket_peterpanContext _context;
-
         public BuildingController(rocket_peterpanContext context) => _context = context;
-
         [HttpGet]
-        public IEnumerable<Building> GetBatteries() {
-            return _context.Buildings; 
+        public async Task<IActionResult> GetBuildingsWhoNeedIntervention() {
+            var buildings = _context.Buildings.Where(b => b.Batteries.Any(bat => bat.Status == "Intervention" || bat.Columns
+            .Any(c => c.Status == "Intervention" || c.Elevators
+            .Any(e => e.Status == "Intervention"))));
+            return Ok(buildings);
         }  
     }
 }

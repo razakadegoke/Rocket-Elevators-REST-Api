@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Rockets_Elevators_web_api
 {
@@ -15,6 +16,7 @@ namespace Rockets_Elevators_web_api
         public string Information { get; set; } = null!;
         public string Notes { get; set; } = null!;
         public long? BuildingId { get; set; }
+        [ForeignKey("BuildingId")]
         public Building Building { get; set; }
         public List<Column> Columns { get; set;}
         

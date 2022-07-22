@@ -531,9 +531,9 @@ namespace Rockets_Elevators_web_api
                     .HasMaxLength(255)
                     .HasColumnName("email");
 
-                entity.Property(e => e.File)
-                    .HasColumnType("blob")
-                    .HasColumnName("file");
+                // entity.Property(e => e.File)
+                //     .HasColumnType("blob")
+                //     .HasColumnName("file");
 
                 entity.Property(e => e.FullNameContact)
                     .HasMaxLength(255)
