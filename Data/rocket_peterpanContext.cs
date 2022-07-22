@@ -27,7 +27,7 @@ namespace Rockets_Elevators_web_api
         public virtual DbSet<Elevator> Elevators { get; set; } = null!;
         public virtual DbSet<Employee> Employees { get; set; } = null!;
         public virtual DbSet<GoogleMapsCustomersLocation> GoogleMapsCustomersLocations { get; set; } = null!;
-        public virtual DbSet<Lead> Leads { get; set; } = null!;
+        public virtual DbSet<Lead> Leads { get; set; }// = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<Quote> Quotes { get; set; } = null!;
         public virtual DbSet<SchemaMigration> SchemaMigrations { get; set; } = null!;
@@ -531,9 +531,9 @@ namespace Rockets_Elevators_web_api
                     .HasMaxLength(255)
                     .HasColumnName("email");
 
-                entity.Property(e => e.File)
-                    .HasColumnType("blob")
-                    .HasColumnName("file");
+                // entity.Property(e => e.File)
+                //     .HasColumnType("blob")
+                //     .HasColumnName("file");
 
                 entity.Property(e => e.FullNameContact)
                     .HasMaxLength(255)
