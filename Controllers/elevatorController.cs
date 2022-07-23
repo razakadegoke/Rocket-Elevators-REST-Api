@@ -32,10 +32,10 @@ namespace Rockets_Elevators_web_api.Controllers{
         [HttpPut("{id}/{status}")]
         public async Task<IActionResult> UpdateElevatorStatusById(long id, String status){
             var elevator = _context.Elevators.FirstOrDefault(e => e.Id == id);
-            if(status != "Intervention" || status != "Inactive" || status != "Active") return BadRequest();
             if (elevator == null) return NotFound();
             elevator.Status = status;
             await _context.SaveChangesAsync();
+            if(status != "Intervention" || status != "Inactive" || status != "Active") return BadRequest();
             return elevator == null ? NotFound() : Ok(elevator);
         }
     }
