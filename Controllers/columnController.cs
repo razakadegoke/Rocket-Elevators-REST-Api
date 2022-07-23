@@ -18,7 +18,6 @@ namespace Rockets_Elevators_web_api.Controllers{
             var column = _context.Columns.FirstOrDefault(c => c.Id == id);
             if (column == null) return NotFound();
             column.Status = status;
-            if(status != "Intervention" || status != "Inactive" || status != "Active") return BadRequest();
             await _context.SaveChangesAsync();
             return column == null ? NotFound() : Ok(column);
         }

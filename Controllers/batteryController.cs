@@ -18,7 +18,6 @@ namespace Rockets_Elevators_web_api.Controllers{
             var battery = _context.Batteries.FirstOrDefault(b => b.Id == id);
             if (battery == null) return NotFound();
             battery.Status = status;
-            if(status != "Intervention" || status != "Inactive" || status != "Active") return BadRequest();
             await _context.SaveChangesAsync();
             return battery == null ? NotFound() : Ok(battery);
         }

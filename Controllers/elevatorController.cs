@@ -35,7 +35,6 @@ namespace Rockets_Elevators_web_api.Controllers{
             if (elevator == null) return NotFound();
             elevator.Status = status;
             await _context.SaveChangesAsync();
-            if(status != "Intervention" || status != "Inactive" || status != "Active") return BadRequest();
             return elevator == null ? NotFound() : Ok(elevator);
         }
     }
