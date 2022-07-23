@@ -1,23 +1,23 @@
-#ROCKET ELEVATOR API
+# ROCKET ELEVATOR API
 
 This API is deploy on Microsoft Azure Services and create with ASP.NET Core 6
 
 You can test the end-point using the curl command on the terminal or in the browser.
 
-###Exemple:
+### Exemple:
     
-*Terminal:
+* Terminal:
 
 ```bash
     curl -X 'GET' \ 'https://rocketelevators-api.azurewebsites.net/api/Building'
 ```
-*In the browser using Swagger:
+* In the browser using Swagger:
 
     https://rocketelevators-api.azurewebsites.net/swagger/index.html
 
 
 
-##Exemple of endpoint list : 
+## Exemple of endpoint list : 
 
 Retrieving the current status of a specific Battery :
 
@@ -56,6 +56,7 @@ Retrieving a list of Leads created in the last 30 days who have not yet become c
     https://rocketelevators-api.azurewebsites.net/api/Lead
 
 ****If you want to change the status of the : Batteries, columns and elevators the only possible value are : Active Inactive and Intervention
+
 ****if you dont choose thes values it will trow error.
 
 Author : Razak Adegoke And Avinash Gopalakrishnan
