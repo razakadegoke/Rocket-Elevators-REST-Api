@@ -16,6 +16,7 @@ namespace Rockets_Elevators_web_api.Controllers{
         [HttpPut("{id}/{status}")]
         public async Task<IActionResult> UpdateColumnStatusById(long id, String status){
             var column = _context.Columns.FirstOrDefault(c => c.Id == id);
+            if(status != "Intervention" || status != "Inactive" || status != "Active") return BadRequest();
             if (column == null) return NotFound();
             column.Status = status;
             await _context.SaveChangesAsync();

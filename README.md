@@ -55,6 +55,7 @@ Retrieving a list of Leads created in the last 30 days who have not yet become c
 
     https://rocketelevators-api.azurewebsites.net/api/Lead
 
-
+****If you want to change the status of the : Batteries, columns and elevators the only possible value are : Active Inactive and Intervention
+****if you dont choose thes values it will trow error.
 
 Author : Razak Adegoke And Avinash Gopalakrishnan
