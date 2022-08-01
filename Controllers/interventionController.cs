@@ -12,32 +12,32 @@ namespace Rockets_Elevators_web_api.Controllers
 
         public InterventionController(rocket_peterpanContext context) => _context = context;
         
-        [HttpGet("{status}")]//("{id}")
-        public async Task<IActionResult> GetInterventionBystatus(string status)
+        [HttpGet]
+        public async Task<IActionResult> GetInterventionBystatus()
         {
-            var intervention =  _context.Interventions.Where(i => (i.status == status) && (i.interventionDateStart == null || i.interventionDateStart == "nil"||i.interventionDateStart == ""));
+            var intervention =  _context.Interventions.Where(i => i.status == "Pending" && (i.interventionDateStart == null ||i.interventionDateStart == ""));
             if (intervention == null) return NotFound();
             return Ok(intervention);
         }
 
-        [HttpPut("{id}/{status}/{interventionDateStart}")]
-        public async Task<IActionResult> ChangeStatusAndStartDate(long id,string status,string interventionDateStart)
+        [HttpPut("Starting New Intervention {id}/{interventionDateStart}")]
+        public async Task<IActionResult> ChangeStatusAndStartDate(long id,string interventionDateStart)
         {
             var intervention = _context.Interventions.Find(id);
             if (intervention == null) return NotFound();
-            intervention.status = status;
+            intervention.status = "InProgress";
             intervention.interventionDateStart = interventionDateStart;
             await _context.SaveChangesAsync();
             return Ok(intervention);
 
         }
 
-        [HttpPut("{id}/{status}/{interventionDateEnd}")]
-        public async Task<IActionResult> ChangeStatusAndEndDate(long id,string status,string interventionDateEnd)
+        [HttpPut("Ending New Intervention {id}/end/{interventionDateEnd}")]
+        public async Task<IActionResult> ChangeStatusAndEndDate(long id,string interventionDateEnd)
         {
             var intervention = _context.Interventions.Find(id);
             if (intervention == null) return NotFound();
-            intervention.status = status;
+            intervention.status = "Completed";
             intervention.interventionDateEnd = interventionDateEnd;
             await _context.SaveChangesAsync();
             return Ok(intervention);
