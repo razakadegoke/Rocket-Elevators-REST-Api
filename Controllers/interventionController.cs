@@ -20,7 +20,7 @@ namespace Rockets_Elevators_web_api.Controllers
             return Ok(intervention);
         }
 
-        [HttpPut("Starting New Intervention {id}/{interventionDateStart}")]
+        [HttpPut("{id}/{interventionDateStart}")]
         public async Task<IActionResult> ChangeStatusAndStartDate(long id,string interventionDateStart)
         {
             var intervention = _context.Interventions.Find(id);
@@ -32,7 +32,7 @@ namespace Rockets_Elevators_web_api.Controllers
 
         }
 
-        [HttpPut("Ending New Intervention {id}/end/{interventionDateEnd}")]
+        [HttpPut("{id}/end/{interventionDateEnd}")]
         public async Task<IActionResult> ChangeStatusAndEndDate(long id,string interventionDateEnd)
         {
             var intervention = _context.Interventions.Find(id);

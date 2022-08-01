@@ -55,6 +55,11 @@ Retrieving a list of Leads created in the last 30 days who have not yet become c
 
     https://rocketelevators-api.azurewebsites.net/api/Lead
 
+Returns all fields of all intervention Request records that do not have a start date and are in "Pending" status.
+
+    https://rocketelevators-api.azurewebsites.net/api//Intervention
+
+
 ****If you want to change the status of the : Batteries, columns and elevators the only possible value are : Active Inactive and Intervention
 
 ****if you dont choose thes values it will trow error.
