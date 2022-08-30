@@ -22,7 +22,7 @@ namespace Rockets_Elevators_web_api.Controllers{
             DateLastInspection = e.DateLastInspection,
             CertificateOperations = e.CertificateOperations,
             Information = e.Information
-            }).Where(e => e.Status == "notInOperation");
+            }).Where(e => e.Status == "Inactive");
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetElevatorStatusById(long id){
